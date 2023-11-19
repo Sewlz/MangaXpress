@@ -37,12 +37,12 @@
                 android:textSize="40dp" />
 
             <EditText
-                android:id="@+id/edtUserName"
+                android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 android:textColor="@color/white"
-                android:hint="UserName"
+                android:hint="Email"
                 android:textColorHint="@color/white" />
 
             <EditText

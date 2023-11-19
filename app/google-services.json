@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1026085827307",
+    "project_id": "mangareader-a264b",
+    "storage_bucket": "mangareader-a264b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026085827307:android:e352a7d8064605214d04ae",
+        "android_client_info": {
+          "package_name": "com.example.mangareader"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5QyXMT4NGSIeJOzfbGD7v2scRTSERMe4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

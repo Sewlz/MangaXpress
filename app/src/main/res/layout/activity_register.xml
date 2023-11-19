@@ -42,13 +42,13 @@
         android:textColor="@color/white"
         android:hint="Your Name" />
     <EditText
-        android:id="@+id/edtUserReg"
+        android:id="@+id/edtEmailReg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
-        android:hint="UserName" />
+        android:hint="Email" />
     <EditText
         android:id="@+id/edtPassReg"
         android:layout_width="match_parent"
