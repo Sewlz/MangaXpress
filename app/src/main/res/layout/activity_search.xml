@@ -7,28 +7,29 @@
     tools:context=".SearchActivity">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#292929"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
+
         <EditText
             android:id="@+id/edtSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/rounded_edit_text"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:gravity="center"
+            android:drawableLeft="@drawable/baseline_search_24"
             android:ellipsize="start"
             android:ems="10"
-            android:padding="10dp"
-            android:inputType="text"
-            android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:hint="Enter Manga Name Here"
-            android:drawableLeft="@drawable/baseline_search_24"
-            />
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
         <ListView
             android:id="@+id/lvSearch"
             android:layout_width="match_parent"

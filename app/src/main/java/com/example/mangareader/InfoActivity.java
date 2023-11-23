@@ -12,6 +12,7 @@ public class InfoActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 viewPager;
     ViewPagerAdapter viewPagerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

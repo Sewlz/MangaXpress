@@ -2,11 +2,29 @@ package com.example.mangareader;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +42,10 @@ public class ChapterFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private String apiUrl = "https://wibutools.live/api/komiku/one-piece";
+    ArrayList<String> arrayList = new ArrayList<>();
+    ArrayAdapter<String> adapter;
+    ListView lvChapter;
     public ChapterFragment() {
         // Required empty public constructor
     }
@@ -60,5 +82,44 @@ public class ChapterFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_chapter, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        lvChapter = (ListView) view.findViewById(R.id.lvChapter);
+        getAllData(apiUrl);
+    }
+
+    public void getAllData(String url){
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JsonDataToArrayList(response);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "Error Data!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(stringRequest);
+    }
+    public void JsonDataToArrayList(String response) throws JSONException {
+        JSONObject resObj = new JSONObject(response);
+        JSONObject dataObj= resObj.getJSONObject("data");
+        JSONArray chapArr = dataObj.getJSONArray("chapters");
+        for(int i = 0; i<chapArr.length();i++){
+            JSONObject jsonObject= chapArr.getJSONObject(i);
+            String chapterName =  jsonObject.getString("chapter");
+            arrayList.add(chapterName);
+        }
+        adapter = new ArrayAdapter<>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,arrayList);
+        lvChapter.setAdapter(adapter);
     }
 }
