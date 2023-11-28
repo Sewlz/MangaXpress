@@ -8,13 +8,14 @@
     android:background="#292929"
     tools:context=".HomeActivity">
 
-    <ImageView
+    <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/imgHome"
         android:layout_width="match_parent"
-        android:layout_height="91dp"
-        android:layout_weight="1"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_launcher_background" />
+        android:layout_height="101dp"
+        app:iss_period="1000"
+        app:iss_auto_cycle="true"
+        app:iss_delay="1000"
+        />
 
     <ListView
         android:id="@+id/lvHome"

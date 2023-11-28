@@ -18,6 +18,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -38,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
     TextView tvHomePage;
     String next_page,prev_page;
     boolean isLoadingData = false;
+    ImageSlider imgHome;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,12 +61,23 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
     private void addControl(){
+        imgHome = (ImageSlider) findViewById(R.id.imgHome);
         lvHome = (ListView) findViewById(R.id.lvHome);
         btnHomeNext = (ImageButton) findViewById(R.id.btnHomeNext);
         btnHomePrev = (ImageButton) findViewById(R.id.btnHomePrev);
         tvHomePage = (TextView) findViewById(R.id.tvHomePage);
     }
+    ArrayList<SlideModel> setImageList = new ArrayList<>();
+    private void initImg(){
+        setImageList.add(new SlideModel(R.drawable.slide1, ScaleTypes.FIT));
+        setImageList.add(new SlideModel(R.drawable.slide2, ScaleTypes.FIT));
+        setImageList.add(new SlideModel(R.drawable.slide3, ScaleTypes.FIT));
+        setImageList.add(new SlideModel(R.drawable.slide4, ScaleTypes.FIT));
+    };
+
     private void addEvent(){
+        initImg();
+        imgHome.setImageList(setImageList,ScaleTypes.FIT);
         lvHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

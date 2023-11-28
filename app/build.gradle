@@ -30,6 +30,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
     implementation 'com.android.volley:volley-cronet:1.2.1'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'androidx.appcompat:appcompat:1.6.1'
