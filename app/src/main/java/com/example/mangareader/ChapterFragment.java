@@ -1,5 +1,6 @@
 package com.example.mangareader;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -42,9 +44,10 @@ public class ChapterFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private String apiUrl = "https://wibutools.live/api/komiku/one-piece";
     ArrayList<String> arrayList = new ArrayList<>();
+    ArrayList<String> arrayListChapter = new ArrayList<>();
     ArrayAdapter<String> adapter;
+    String ChapterUrl;
     ListView lvChapter;
     public ChapterFragment() {
         // Required empty public constructor
@@ -88,7 +91,18 @@ public class ChapterFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         lvChapter = (ListView) view.findViewById(R.id.lvChapter);
-        getAllData(apiUrl);
+        InfoActivity activity = (InfoActivity) getActivity();
+        String detail_url = activity.get_detail_url();
+        getAllData(detail_url);
+        lvChapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ChapterUrl = "https"+arrayListChapter.get(position).substring(4);
+                Intent intent = new Intent(getContext(), ReadingActivity.class);
+                intent.putExtra("chapterUrl", ChapterUrl);
+                startActivity(intent);
+            }
+        });
     }
 
     public void getAllData(String url){
@@ -117,7 +131,9 @@ public class ChapterFragment extends Fragment {
         for(int i = 0; i<chapArr.length();i++){
             JSONObject jsonObject= chapArr.getJSONObject(i);
             String chapterName =  jsonObject.getString("chapter");
+            String url =  jsonObject.getString("detail_url");
             arrayList.add(chapterName);
+            arrayListChapter.add(url);
         }
         adapter = new ArrayAdapter<>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,arrayList);
         lvChapter.setAdapter(adapter);

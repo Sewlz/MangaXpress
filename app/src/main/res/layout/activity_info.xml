@@ -10,12 +10,15 @@
 <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
+
     <ImageView
         android:id="@+id/imgInfoThumb"
         android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="126dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:tint="#88000000"
+        />
 
     <TextView
         android:id="@+id/tvInfoTitle"
@@ -31,7 +34,7 @@
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         android:gravity="bottom|left"
-        android:text="This is a manga tile"
+        android:text=""
         android:textColor="@color/white" />
 </RelativeLayout>
     <com.google.android.material.tabs.TabLayout

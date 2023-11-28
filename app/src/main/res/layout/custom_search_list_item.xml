@@ -11,7 +11,7 @@
         tools:layout_editor_absoluteY="1dp">
 
         <ImageView
-            android:id="@+id/imgAlbum"
+            android:id="@+id/imgSearch"
             android:layout_width="205dp"
             android:layout_height="100dp"
             android:layout_weight="1"
@@ -25,14 +25,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvTitle"
+                android:id="@+id/tvSearchTitle"
                 android:textSize="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
 
             <TextView
-                android:id="@+id/tvNumTrack"
+                android:id="@+id/tvSearchDes"
                 android:textSize="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -7,8 +7,8 @@
     tools:context=".ReadingActivity">
 
     <RelativeLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#292929"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
@@ -24,23 +24,23 @@
             android:layout_marginEnd="1dp"
             android:layout_marginBottom="687dp"
             android:gravity="center"
-            android:text="This is a manga title"
+
             android:textColor="@color/white"
             android:textSize="20sp" />
-
+<!--        android:text="This is a manga title"-->
         <ImageView
             android:id="@+id/imgPannel"
             android:layout_width="match_parent"
             android:layout_height="543dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:scaleType="fitXY"
             android:layout_marginTop="64dp"
             android:layout_marginBottom="122dp"
+            android:scaleType="fitXY"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
-            android:id="@+id/btnPage"
+            android:id="@+id/tvPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"

@@ -11,14 +11,15 @@
     <ImageView
         android:id="@+id/imgHome"
         android:layout_width="match_parent"
-        android:layout_height="81dp"
+        android:layout_height="91dp"
         android:layout_weight="1"
         android:scaleType="fitXY"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:src="@drawable/ic_launcher_background" />
 
     <ListView
+        android:id="@+id/lvHome"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="441dp"
         android:layout_weight="1" />
 
     <LinearLayout
@@ -27,7 +28,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/btnHomeNext"
+            android:id="@+id/btnHomePrev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -41,11 +42,11 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="0"
+            android:text="1"
             android:textColor="#FFFFFF" />
 
         <ImageButton
-            android:id="@+id/btnHomePrev"
+            android:id="@+id/btnHomeNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
