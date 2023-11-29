@@ -36,7 +36,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginTop="64dp"
             android:layout_marginBottom="122dp"
-            android:scaleType="fitXY"
+            android:scaleType="fitCenter"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView

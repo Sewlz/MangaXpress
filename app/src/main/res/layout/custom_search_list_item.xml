@@ -11,6 +11,7 @@
         tools:layout_editor_absoluteY="1dp">
 
         <ImageView
+            android:scaleType="centerCrop"
             android:id="@+id/imgSearch"
             android:layout_width="205dp"
             android:layout_height="100dp"
