@@ -28,8 +28,10 @@ public class CustomSearchAdapter extends ArrayAdapter {
         }
         ImageView imgSearch = (ImageView) convertView.findViewById(R.id.imgSearch);
         Picasso.get().load(detail.getThumbnail()).resize(100,100).into(imgSearch);
+
         TextView tvSearchTitle = (TextView) convertView.findViewById(R.id.tvSearchTitle);
         tvSearchTitle.setText(detail.getTitle());
+
         TextView tvSearchDes = (TextView) convertView.findViewById(R.id.tvSearchDes);
         String des = detail.getSynopsis();
         String truncatedContent = des.length() > 10 ? des.substring(0, 40) + "..." : des;

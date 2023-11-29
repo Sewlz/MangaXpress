@@ -8,51 +8,20 @@
     android:background="#292929"
     tools:context=".HomeActivity">
 
-    <com.denzcoskun.imageslider.ImageSlider
-        android:id="@+id/imgHome"
+    <FrameLayout
+        android:id="@+id/frameHome"
         android:layout_width="match_parent"
-        android:layout_height="101dp"
-        app:iss_period="1000"
-        app:iss_auto_cycle="true"
-        app:iss_delay="1000"
-        />
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="72dp">
 
-    <ListView
-        android:id="@+id/lvHome"
-        android:layout_width="match_parent"
-        android:layout_height="441dp"
-        android:layout_weight="1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/btnHomePrev"
-            android:layout_width="wrap_content"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navHome"
+            android:layout_width="409dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#00FFFFFF"
-            app:srcCompat="@drawable/baseline_navigate_before_24" />
+            android:layout_gravity="bottom"
+            app:menu="@menu/bottom_nav">
 
-        <TextView
-            android:id="@+id/tvHomePage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="#FFFFFF" />
-
-        <ImageButton
-            android:id="@+id/btnHomeNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#00FFFFFF"
-            app:srcCompat="@drawable/baseline_navigate_next_24" />
-
-    </LinearLayout>
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </FrameLayout>
 </LinearLayout>

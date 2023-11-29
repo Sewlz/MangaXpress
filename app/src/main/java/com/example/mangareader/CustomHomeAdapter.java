@@ -27,13 +27,17 @@ public class CustomHomeAdapter extends ArrayAdapter {
             convertView = LayoutInflater.from(context).inflate(resource,null);
         }
         ImageView imgThumb = (ImageView) convertView.findViewById(R.id.imgThumb);
-        Picasso.get().load(manga.getThumbnail()).resize(100,100).into(imgThumb);
+        Picasso.get().load(manga.getThumbnail()).into(imgThumb);
+
         TextView tvHomeTitle = (TextView) convertView.findViewById(R.id.tvHomeTitle);
-        tvHomeTitle.setText(manga.getTitle());
-        TextView tvHomeDes = (TextView) convertView.findViewById(R.id.tvHomeDes);
-        String des = manga.getLatest_chapter();
-//        String truncatedContent = des.length() > 10 ? des.substring(0, 40) + "..." : des;
-        tvHomeDes.setText(des);
+        String strTitle = manga.getTitle();
+        String truncateStrTitle = strTitle.length() > 20 ? strTitle.substring(0, 20) + "..." : strTitle;
+        tvHomeTitle.setText(truncateStrTitle);
+
+        TextView tvHomeDes = (TextView) convertView.findViewById(R.id.tvHomeChapter);
+        String chap = manga.getLatest_chapter();
+        tvHomeDes.setText(chap);
+
         return convertView;
     }
 

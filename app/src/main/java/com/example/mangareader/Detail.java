@@ -3,7 +3,7 @@ package com.example.mangareader;
 import java.io.Serializable;
 
 public class Detail implements Serializable {
-String title;
+    String title;
     String thumbnail;
     String genre;
 
