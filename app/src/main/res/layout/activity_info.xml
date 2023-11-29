@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#292929"
     tools:context=".InfoActivity">
+
 <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
@@ -17,8 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="126dp"
         tools:srcCompat="@tools:sample/backgrounds/scenic"
-        android:tint="#88000000"
-        />
+        android:tint="#88000000" />
 
     <TextView
         android:id="@+id/tvInfoTitle"
@@ -40,8 +39,7 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#292929">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

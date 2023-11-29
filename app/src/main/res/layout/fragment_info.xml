@@ -3,33 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#292929"
     android:orientation="vertical"
     tools:context=".InfoFragment">
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Synopsis:"
-        android:textColor="#FFFFFF" />
-
-    <TextView
-        android:id="@+id/tvSynopsis"
-        android:layout_width="match_parent"
-        android:layout_height="69dp"
-        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Genres:"
-        android:textColor="#FFFFFF" />
+        android:layout_margin="10dp"
+        android:textSize="20dp"
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/tvGenres"
         android:layout_width="match_parent"
-        android:layout_height="73dp"
-        android:textColor="#FFFFFF" />
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Synopsis:"
+        android:layout_margin="10dp"
+        android:textSize="20dp"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvSynopsis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="100dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="15dp"
+        android:textColor="@color/black" />
+
 </LinearLayout>

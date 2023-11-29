@@ -85,9 +85,11 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
     }
+
     public String get_detail_url() {
         return detail_url;
     }
+
     private void getAllData(String url){
         RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -107,6 +109,7 @@ public class InfoActivity extends AppCompatActivity {
         });
         queue.add(stringRequest);
     }
+
     private void JsonDataToArrayList(String response) throws JSONException {
         JSONObject resObj = new JSONObject(response);
         JSONObject dataObj= resObj.getJSONObject("data");
@@ -115,12 +118,13 @@ public class InfoActivity extends AppCompatActivity {
         detail.synopsis = dataObj.getString("synopsis");
         JSONArray genreArr = dataObj.getJSONArray("genre");
         for(int i=0;i<genreArr.length();i++){
-            genre = genre + genreArr.getString(i) + " ";
+            genre = genre + genreArr.getString(i) + " - ";
         }
         detail.genre = genre;
         inflateView(detail);
         addEvent(detail);
     }
+
     private void inflateView(Detail detail){
         tvInfoTitle.setText(detail.getTitle().replace("Komik",""));
         Picasso.get().load(detail.getThumbnail()).into(imgInfoThumb);
