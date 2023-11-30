@@ -62,7 +62,6 @@ public class Fragment_Profile extends Fragment {
     ArrayAdapter<String> adapter;
     ArrayList<String> arrayList = new ArrayList<>();
     TextView tvEmail;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,15 +88,19 @@ public class Fragment_Profile extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         arrayList.add("Change Password");
         arrayList.add("Log Out");
+        arrayList.add("Favorites");
         adapter = new ArrayAdapter<>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, arrayList);
         lvProfile.setAdapter(adapter);
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-
-        tvEmail.setText(user.getEmail().toString());
-
-        addEvents();
+        if(user == null){
+            Intent intent = new Intent(getContext(),LoginActivity.class);
+            startActivity(intent);
+        }else{
+            tvEmail.setText(user.getEmail().toString());
+            addEvents();
+        }
     }
 
     private void addEvents(){
@@ -106,10 +109,13 @@ public class Fragment_Profile extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(i == 0){
                     
-                }else {
+                }else if (i == 1) {
                     Toast.makeText(getContext(), "Dang xuat", Toast.LENGTH_SHORT).show();
                     FirebaseAuth.getInstance().signOut();
                     Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }else if(i==2){
+                    Intent intent = new Intent(getContext(), FavoriteActivity.class);
                     startActivity(intent);
                 }
             }

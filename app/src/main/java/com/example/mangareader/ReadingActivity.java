@@ -23,8 +23,10 @@ import java.util.ArrayList;
 
 public class ReadingActivity extends AppCompatActivity {
     ListView lvPicture;
+    TextView tvTitle;
     CustomAdapterChapterPicture adapter;
     ArrayList<String> pictureList = new ArrayList<>();
+    String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,9 @@ public class ReadingActivity extends AppCompatActivity {
         String url = intent.getStringExtra("chapterUrl");
         getAllPictures(url);
         lvPicture = findViewById(R.id.lvPicture);
-
+        tvTitle = findViewById(R.id.tvTitle);
+        title = url.substring(42).replace("-"," ").toUpperCase();
+        tvTitle.setText(title);
     }
 
     public void getAllPictures(String url) {

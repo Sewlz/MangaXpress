@@ -2,6 +2,7 @@ package com.example.mangareader;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -81,7 +84,8 @@ public class Fragment_Search extends Fragment {
     ListView lvSearch;
     ArrayList<Detail> arrayList = new ArrayList<>();
     CustomSearchAdapter adapter;
-
+    FirebaseAuth mAuth;
+    FirebaseUser user;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -90,13 +94,19 @@ public class Fragment_Search extends Fragment {
         addControls(view);
         return view;
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        addEvents();
-    }
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        if(user == null){
+            Intent intent = new Intent(getContext(),LoginActivity.class);
+            startActivity(intent);
+        }else {
+            addEvents();
+        }
 
+    }
     private void addControls(View view){
         edtSearch = (EditText) view.findViewById(R.id.edtSearch);
         lvSearch = (ListView) view.findViewById(R.id.lvSearch);

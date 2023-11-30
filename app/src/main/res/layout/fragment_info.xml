@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context=".InfoFragment">
 
     <TextView
@@ -40,5 +42,13 @@
         android:layout_marginLeft="10dp"
         android:textSize="15dp"
         android:textColor="@color/black" />
+
+    <ImageButton
+        android:id="@+id/btnFav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="#C4CAE3EF"
+        android:src="@drawable/baseline_favorite_border_black_24" />
 
 </LinearLayout>

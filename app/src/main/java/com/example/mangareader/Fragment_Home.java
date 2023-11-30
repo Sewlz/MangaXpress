@@ -133,6 +133,8 @@ public class Fragment_Home extends Fragment {
         setImageList.add(new SlideModel(R.drawable.slide2, ScaleTypes.FIT));
         setImageList.add(new SlideModel(R.drawable.slide3, ScaleTypes.FIT));
         setImageList.add(new SlideModel(R.drawable.slide4, ScaleTypes.FIT));
+        setImageList.add(new SlideModel(R.drawable.slide5, ScaleTypes.FIT));
+        setImageList.add(new SlideModel(R.drawable.slide6, ScaleTypes.FIT));
     };
 
     private void addEvent(){
@@ -143,6 +145,7 @@ public class Fragment_Home extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getContext(),InfoActivity.class);
                 String detail_url = arrayList.get(position).getDetail_url();
+                String title = arrayList.get(position).getTitle();
                 intent.putExtra("detail_url",detail_url);
                 startActivity(intent);
             }
