@@ -36,6 +36,7 @@ public class InfoActivity extends AppCompatActivity {
     TextView tvInfoTitle;
     ImageView imgInfoThumb;
     private String detail_url;
+    private String title;
     private String search_url;
     Detail detail = new Detail();
     String genre = "";
@@ -134,6 +135,7 @@ public class InfoActivity extends AppCompatActivity {
         for(int i=0;i<genreArr.length();i++){
             genre = genre + genreArr.getString(i) + " - ";
         }
+        genre = genre.substring(0,genre.length()-2);
         detail.genre = genre;
         inflateView(detail);
         addEvent(detail);

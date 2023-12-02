@@ -67,9 +67,12 @@ public class Fragment_Profile extends Fragment {
     ArrayAdapter<String> adapter;
     ArrayList<String> arrayList = new ArrayList<>();
     TextView tvEmail;
+<<<<<<< HEAD
     FirebaseAuth mAuth;
     FirebaseUser user;
 
+=======
+>>>>>>> 26febabc8945478497181035c9af5e8aed752e40
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,15 +96,19 @@ public class Fragment_Profile extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         arrayList.add("Change Password");
         arrayList.add("Log Out");
+        arrayList.add("Favorites");
         adapter = new ArrayAdapter<>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, arrayList);
         lvProfile.setAdapter(adapter);
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-
-        tvEmail.setText(user.getEmail().toString());
-
-        addEvents();
+        if(user == null){
+            Intent intent = new Intent(getContext(),LoginActivity.class);
+            startActivity(intent);
+        }else{
+            tvEmail.setText(user.getEmail().toString());
+            addEvents();
+        }
     }
 
     private void addControls(View view){
@@ -114,11 +121,20 @@ public class Fragment_Profile extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(i == 0){
+<<<<<<< HEAD
                     showCustomDialog();
                 }else {
                     Toast.makeText(getContext(), "Log out successful", Toast.LENGTH_SHORT).show();
+=======
+                    
+                }else if (i == 1) {
+                    Toast.makeText(getContext(), "Dang xuat", Toast.LENGTH_SHORT).show();
+>>>>>>> 26febabc8945478497181035c9af5e8aed752e40
                     FirebaseAuth.getInstance().signOut();
                     Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }else if(i==2){
+                    Intent intent = new Intent(getContext(), FavoriteActivity.class);
                     startActivity(intent);
                 }
             }

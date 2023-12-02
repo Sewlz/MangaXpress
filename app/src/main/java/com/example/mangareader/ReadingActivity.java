@@ -29,6 +29,7 @@ import java.util.ArrayList;
 
 public class ReadingActivity extends AppCompatActivity {
     ListView lvPicture;
+<<<<<<< HEAD
     ImageButton btnNextChap, btnPrevChap, btnBack;
     Button btnShow;
     TextView tvNumChap;
@@ -37,6 +38,12 @@ public class ReadingActivity extends AppCompatActivity {
     String next_url, prev_url, url;
     int positionChapter;
     boolean isLoadingData = false;
+=======
+    TextView tvTitle;
+    CustomAdapterChapterPicture adapter;
+    ArrayList<String> pictureList = new ArrayList<>();
+    String title;
+>>>>>>> 26febabc8945478497181035c9af5e8aed752e40
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +58,7 @@ public class ReadingActivity extends AppCompatActivity {
         arrayListName = intent.getStringArrayListExtra("ArrayListName");
         updateUrl(positionChapter);
         getAllPictures(url);
+<<<<<<< HEAD
 
         addEvents();
     }
@@ -149,6 +157,12 @@ public class ReadingActivity extends AppCompatActivity {
             }
         });
 
+=======
+        lvPicture = findViewById(R.id.lvPicture);
+        tvTitle = findViewById(R.id.tvTitle);
+        title = url.substring(42).replace("-"," ").toUpperCase();
+        tvTitle.setText(title);
+>>>>>>> 26febabc8945478497181035c9af5e8aed752e40
     }
 
     public void getAllPictures(String url) {

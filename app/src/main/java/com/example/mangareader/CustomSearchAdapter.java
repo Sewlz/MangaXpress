@@ -30,7 +30,7 @@ public class CustomSearchAdapter extends ArrayAdapter {
         Picasso.get().load(detail.getThumbnail()).resize(100,100).into(imgSearch);
 
         TextView tvSearchTitle = (TextView) convertView.findViewById(R.id.tvSearchTitle);
-        tvSearchTitle.setText(detail.getTitle());
+        tvSearchTitle.setText(detail.getTitle().replace("Komik",""));
 
         TextView tvSearchDes = (TextView) convertView.findViewById(R.id.tvSearchDes);
         String des = detail.getSynopsis();
