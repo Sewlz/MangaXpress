@@ -57,12 +57,10 @@ public class InfoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     TextView tvSynopsis, tvGenres;
-<<<<<<< HEAD
     Button btnFirst, btnLast;
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayList<String> arrayListChapter = new ArrayList<>();
 
-=======
     ImageView btnFav;
     FirebaseFirestore db= FirebaseFirestore.getInstance();
     CollectionReference collectionReference = db.collection("UserFav");
@@ -70,7 +68,7 @@ public class InfoFragment extends Fragment {
     FirebaseUser user;
     String detail_url;
     String thumbnail_url;
->>>>>>> 26febabc8945478497181035c9af5e8aed752e40
+
     public InfoFragment() {
         // Required empty public constructor
     }
@@ -108,13 +106,16 @@ public class InfoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        addControls(view);
+
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
+
         InfoActivity activity = (InfoActivity) getActivity();
-<<<<<<< HEAD
-        String detail_url = activity.get_detail_url();
+
+        detail_url = activity.get_detail_url();
+
         getAllData(detail_url);
-        addControls(view);
         getBundle();
     }
 
@@ -157,6 +158,7 @@ public class InfoFragment extends Fragment {
         btnLast = (Button) view.findViewById(R.id.btnLastChap);
         tvSynopsis = (TextView) view.findViewById(R.id.tvSynopsis);
         tvGenres = (TextView) view.findViewById(R.id.tvGenres);
+        btnFav = (ImageView) view.findViewById(R.id.btnFav);
     }
 
     private void addEvents(){
@@ -181,22 +183,7 @@ public class InfoFragment extends Fragment {
                 startActivity(intent);
             }
         });
-=======
-        detail_url = activity.get_detail_url();
-        tvSynopsis = (TextView) view.findViewById(R.id.tvSynopsis);
-        tvGenres = (TextView) view.findViewById(R.id.tvGenres);
-        btnFav = (ImageView) view.findViewById(R.id.btnFav);
-        getBundle();
-        checkFav();
-        addEvent();
->>>>>>> 26febabc8945478497181035c9af5e8aed752e40
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_info, container, false);
-    }
-    private void addEvent(){
         btnFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -204,7 +191,14 @@ public class InfoFragment extends Fragment {
                 addFav(userFav);
             }
         });
+        checkFav();
     }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_info, container, false);
+    }
+
     private void addFav(UserFav userFav){
         collectionReference.whereEqualTo("MANGAURL",detail_url)
                 .whereEqualTo("EMAIL",user.getEmail())
@@ -242,6 +236,7 @@ public class InfoFragment extends Fragment {
                     }
                 });
     }
+
     private void checkFav() {
         collectionReference.whereEqualTo("MANGAURL", detail_url)
                 .whereEqualTo("EMAIL", user.getEmail())
@@ -258,15 +253,12 @@ public class InfoFragment extends Fragment {
                     }
                 });
     }
+
     private void getBundle() {
         Bundle bundle = getArguments();
         if (bundle != null) {
             String synopsis = bundle.getString("synopsis");
             String genre = bundle.getString("genre");
-<<<<<<< HEAD
-=======
-//            Log.d("asdassadsdsadsd", "getBundle: " + synopsis);
->>>>>>> 26febabc8945478497181035c9af5e8aed752e40
             tvSynopsis.setText(synopsis);
             tvGenres.setText(genre);
             thumbnail_url = bundle.getString("thumbnail");

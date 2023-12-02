@@ -38,13 +38,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-<<<<<<< HEAD
                 android:backgroundTint="#E14949"
                 android:src="@drawable/baseline_navigate_before_24" />
-=======
-                android:backgroundTint="#00FFFFFF"
-                android:src="@drawable/baseline_navigate_before_black_24" />
->>>>>>> 26febabc8945478497181035c9af5e8aed752e40
 
             <TextView
                 android:id="@+id/tvHomePage"
@@ -54,24 +49,15 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="1"
-<<<<<<< HEAD
                 android:textColor="#E14949" />
-=======
-                android:textColor="@color/black" />
->>>>>>> 26febabc8945478497181035c9af5e8aed752e40
 
             <ImageButton
                 android:id="@+id/btnHomeNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-<<<<<<< HEAD
                 android:backgroundTint="#E14949"
                 android:src="@drawable/baseline_navigate_next_24" />
-=======
-                android:backgroundTint="#00FFFFFF"
-                android:src="@drawable/baseline_navigate_next_black_24" />
->>>>>>> 26febabc8945478497181035c9af5e8aed752e40
 
         </LinearLayout>
     </LinearLayout>

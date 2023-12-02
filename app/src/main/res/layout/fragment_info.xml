@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-<<<<<<< HEAD
     android:background="#F6F5F5"
-=======
-    android:background="@drawable/background"
->>>>>>> 26febabc8945478497181035c9af5e8aed752e40
     tools:context=".InfoFragment">
 
     <ScrollView
@@ -85,17 +81,17 @@
                     android:backgroundTint="#E14949"
                     android:textColor="@color/white"
                     android:text="Đọc mới nhất" />
+
+                <ImageButton
+                    android:id="@+id/btnFav"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#C4CAE3EF"
+                    android:src="@drawable/baseline_favorite_border_black_24" />
             </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
-
-    <ImageButton
-        android:id="@+id/btnFav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:backgroundTint="#C4CAE3EF"
-        android:src="@drawable/baseline_favorite_border_black_24" />
 
 </LinearLayout>

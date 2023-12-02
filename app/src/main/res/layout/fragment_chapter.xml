@@ -3,11 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    android:background="#F6F5F5"
-=======
     android:background="@drawable/background"
->>>>>>> 26febabc8945478497181035c9af5e8aed752e40
     tools:context=".ChapterFragment">
 
     <ListView
