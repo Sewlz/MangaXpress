@@ -108,8 +108,6 @@ public class Fragment_Home extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-        btnHomePrev.setEnabled(false);
-        btnHomePrev.setEnabled(false);
         if(user == null){
             Intent intent = new Intent(getContext(),LoginActivity.class);
             startActivity(intent);
@@ -155,7 +153,6 @@ public class Fragment_Home extends Fragment {
                         Toast.makeText(getContext(), "Can't go any further.", Toast.LENGTH_SHORT).show();
                     } else {
                         isLoadingData = true; // Đánh dấu là đang tải dữ liệu
-                        btnHomeNext.setEnabled(false); // Vô hiệu hóa nút để ngăn người dùng nhấn liên tục
                         int page = Integer.parseInt(tvHomePage.getText().toString());
                         page++;
                         tvHomePage.setText(String.valueOf(page));
@@ -170,12 +167,11 @@ public class Fragment_Home extends Fragment {
         btnHomePrev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isLoadingData) { // Kiểm tra xem dữ liệu có đang tải hay không
+                if (!isLoadingData) {
                     if (prev_page.equals("null")) {
                         Toast.makeText(getContext(), "Can't go any further.", Toast.LENGTH_SHORT).show();
                     } else {
-                        isLoadingData = true; // Đánh dấu là đang tải dữ liệu
-                        btnHomePrev.setEnabled(false); // Vô hiệu hóa nút để ngăn người dùng nhấn liên tục
+                        isLoadingData = true;
 
                         int page = Integer.parseInt(tvHomePage.getText().toString());
                         page--;
@@ -210,16 +206,20 @@ public class Fragment_Home extends Fragment {
     public void JsonDataToArrayList(String response) throws JSONException {
         JSONObject resObj = new JSONObject(response);
         JSONArray dataArr = resObj.getJSONArray("data");
-        btnHomePrev.setVisibility(View.VISIBLE);
-        btnHomeNext.setVisibility(View.VISIBLE);
+        btnHomeNext.setEnabled(true);
+        btnHomeNext.setAlpha(1f);
+        btnHomePrev.setEnabled(true);
+        btnHomePrev.setAlpha(1f);
         for (int i = 0; i<2;i++){
             Manga m = new Manga();
             next_page = resObj.getString("next_page");
             prev_page = resObj.getString("prev_page");
             if(next_page.contains("null")){
-                btnHomeNext.setVisibility(View.INVISIBLE);
+                btnHomeNext.setEnabled(false);
+                btnHomeNext.setAlpha(0.5f);
             } else if (prev_page.contains("null")) {
-                btnHomePrev.setVisibility(View.INVISIBLE);
+                btnHomePrev.setEnabled(false);
+                btnHomePrev.setAlpha(0.5f);
             }
         }
         for(int i = 0; i<dataArr.length();i++){
@@ -238,8 +238,6 @@ public class Fragment_Home extends Fragment {
         }
         lvHome.setAdapter(adapter);
 
-        isLoadingData = false; // Khi dữ liệu đã được tải xong, đánh dấu là không còn tải dữ liệu
-        btnHomeNext.setEnabled(true);
-        btnHomePrev.setEnabled(true);
+        isLoadingData = false;
     }
 }

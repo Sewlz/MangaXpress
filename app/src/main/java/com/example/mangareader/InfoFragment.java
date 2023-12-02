@@ -1,5 +1,6 @@
 package com.example.mangareader;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,7 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +48,9 @@ public class InfoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     TextView tvSynopsis, tvGenres;
+    Button btnFirst, btnLast;
+    ArrayList<String> arrayList = new ArrayList<>();
+    ArrayList<String> arrayListChapter = new ArrayList<>();
 
     public InfoFragment() {
         // Required empty public constructor
@@ -82,9 +89,75 @@ public class InfoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         InfoActivity activity = (InfoActivity) getActivity();
+        String detail_url = activity.get_detail_url();
+        getAllData(detail_url);
+        addControls(view);
+        getBundle();
+    }
+
+    public void getAllData(String url){
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JsonDataToArrayList(response);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "Error Data!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(stringRequest);
+    }
+
+    public void JsonDataToArrayList(String response) throws JSONException {
+        JSONObject resObj = new JSONObject(response);
+        JSONObject dataObj= resObj.getJSONObject("data");
+        JSONArray chapArr = dataObj.getJSONArray("chapters");
+        for(int i = 0; i<chapArr.length();i++){
+            JSONObject jsonObject= chapArr.getJSONObject(i);
+            String chapterName =  jsonObject.getString("chapter");
+            String url =  jsonObject.getString("detail_url");
+            arrayList.add(chapterName);
+            arrayListChapter.add(url);
+        }
+        addEvents();
+    }
+
+    private void addControls(View view){
+        btnFirst = (Button) view.findViewById(R.id.btnFirstChap);
+        btnLast = (Button) view.findViewById(R.id.btnLastChap);
         tvSynopsis = (TextView) view.findViewById(R.id.tvSynopsis);
         tvGenres = (TextView) view.findViewById(R.id.tvGenres);
-        getBundle();
+    }
+
+    private void addEvents(){
+        btnFirst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ReadingActivity.class);
+                intent.putExtra("positionChapter", arrayListChapter.size() - 1);
+                intent.putExtra("ArrayListChapter", arrayListChapter);
+                intent.putExtra("ArrayListName", arrayList);
+                startActivity(intent);
+            }
+        });
+
+        btnLast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ReadingActivity.class);
+                intent.putExtra("positionChapter", 0);
+                intent.putExtra("ArrayListChapter", arrayListChapter);
+                intent.putExtra("ArrayListName", arrayList);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -97,7 +170,6 @@ public class InfoFragment extends Fragment {
         if (bundle != null) {
             String synopsis = bundle.getString("synopsis");
             String genre = bundle.getString("genre");
-            Log.d("asdassadsdsadsd", "getBundle: " + synopsis);
             tvSynopsis.setText(synopsis);
             tvGenres.setText(genre);
         }

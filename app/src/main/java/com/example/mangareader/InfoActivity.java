@@ -7,6 +7,9 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +39,8 @@ public class InfoActivity extends AppCompatActivity {
     private String search_url;
     Detail detail = new Detail();
     String genre = "";
+    ImageButton btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +66,7 @@ public class InfoActivity extends AppCompatActivity {
         viewPager = (ViewPager2) findViewById(R.id.viewPager);
         imgInfoThumb = (ImageView) findViewById(R.id.imgInfoThumb);
         tvInfoTitle = (TextView) findViewById(R.id.tvInfoTitle);
+        btnBack = (ImageButton) findViewById(R.id.imgBtnBackInfo);
     };
     private void addEvent(Detail detail){
         //mod in order to send data to another fragment in view pager smh -1
@@ -77,11 +83,19 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {}
         });
+
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 tabLayout.getTabAt(position).select();
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

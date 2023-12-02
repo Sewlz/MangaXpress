@@ -13,11 +13,23 @@
 
     <ImageView
         android:id="@+id/imgInfoThumb"
-        android:scaleType="fitXY"
         android:layout_width="match_parent"
-        android:layout_height="126dp"
+        android:layout_height="200dp"
+        android:scaleType="fitCenter"
         tools:srcCompat="@tools:sample/backgrounds/scenic"
         android:tint="#88000000" />
+
+    <ImageButton
+        android:id="@+id/imgBtnBackInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_image_button"
+        android:layout_margin="15dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:src="@drawable/baseline_arrow_back_24" />
 
     <TextView
         android:id="@+id/tvInfoTitle"
@@ -28,13 +40,19 @@
         android:layout_alignRight="@+id/imgInfoThumb"
         android:layout_alignBottom="@+id/imgInfoThumb"
         android:textSize="25dp"
-        android:layout_marginStart="1dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
         android:gravity="bottom|left"
         android:text=""
-        android:textColor="@color/white" />
+        android:textStyle="bold"
+        android:shadowColor="@color/black"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:textColor="#E14949" />
+
 </RelativeLayout>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

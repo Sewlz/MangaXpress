@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
+                android:backgroundTint="#E14949"
                 android:src="@drawable/baseline_navigate_before_24" />
 
             <TextView
@@ -49,14 +49,14 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="1"
-                android:textColor="#FFFFFF" />
+                android:textColor="#E14949" />
 
             <ImageButton
                 android:id="@+id/btnHomeNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
+                android:backgroundTint="#E14949"
                 android:src="@drawable/baseline_navigate_next_24" />
 
         </LinearLayout>

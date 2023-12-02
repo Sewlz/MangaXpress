@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +49,6 @@ public class ChapterFragment extends Fragment {
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayList<String> arrayListChapter = new ArrayList<>();
     ArrayAdapter<String> adapter;
-    String ChapterUrl;
     ListView lvChapter;
     public ChapterFragment() {
         // Required empty public constructor
@@ -98,9 +98,10 @@ public class ChapterFragment extends Fragment {
         lvChapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ChapterUrl = "https"+arrayListChapter.get(position).substring(4);
                 Intent intent = new Intent(getContext(), ReadingActivity.class);
-                intent.putExtra("chapterUrl", ChapterUrl);
+                intent.putExtra("positionChapter", position);
+                intent.putExtra("ArrayListChapter", arrayListChapter);
+                intent.putExtra("ArrayListName", arrayList);
                 startActivity(intent);
             }
         });

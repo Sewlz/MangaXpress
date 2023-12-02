@@ -12,27 +12,84 @@
         android:layout_height="match_parent"
         android:background="#292929">
 
-        <TextView
-            android:id="@+id/tvTitle"
+        <LinearLayout
+            android:id="@+id/linear_layout_reading_1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:text="This is a manga title"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imgBtnBackReading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/baseline_arrow_back_24" />
+
+            <TextView
+                android:id="@+id/tvNumChap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="#E14949"
+                android:text="Chap 98" />
+
+        </LinearLayout>
 
         <ListView
             android:id="@+id/lvPicture"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/tvTitle"
+            android:layout_below="@id/linear_layout_reading_1"
             android:layout_marginTop="20dp"
             android:divider="@android:color/darker_gray"
             android:dividerHeight="1dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:background="#292929"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imgBtnPrevChap"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#E14949"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/baseline_navigate_before_24" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnShowListChap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:backgroundTint="#E14949"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:textAllCaps="false"
+                android:text="Chap 98" />
+
+            <ImageButton
+                android:id="@+id/imgBtnNextChap"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:backgroundTint="#E14949"
+                android:src="@drawable/baseline_navigate_next_24" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
