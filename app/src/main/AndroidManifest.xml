@@ -21,7 +21,7 @@
             android:name=".InfoActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".ReadingActivity"
@@ -30,12 +30,11 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".LoginActivity"
             android:windowSoftInputMode="adjustNothing"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
