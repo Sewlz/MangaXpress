@@ -100,7 +100,7 @@ public class Fragment_Profile extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         if(user == null){
-            Intent intent = new Intent(getContext(),LoginActivity.class);
+            Intent intent = new Intent(getContext(), ActivityLogin.class);
             startActivity(intent);
         }else{
             tvEmail.setText(user.getEmail().toString());
@@ -120,12 +120,12 @@ public class Fragment_Profile extends Fragment {
                 if(i == 0){
                     showCustomDialog();
                 }else if(i==1){
-                    Intent intent = new Intent(getContext(), FavoriteActivity.class);
+                    Intent intent = new Intent(getContext(), ActivityFavorite.class);
                     startActivity(intent);
                 }else{
                     Toast.makeText(getContext(), "Log out successful", Toast.LENGTH_SHORT).show();
                     FirebaseAuth.getInstance().signOut();
-                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    Intent intent = new Intent(getContext(), ActivityLogin.class);
                     startActivity(intent);
                 }
             }
@@ -156,6 +156,9 @@ public class Fragment_Profile extends Fragment {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getContext(), "Password was successfully changed", Toast.LENGTH_SHORT).show();
+                                    FirebaseAuth.getInstance().signOut();
+                                    Intent intent = new Intent(getContext(), ActivityLogin.class);
+                                    startActivity(intent);
                                 } else {
                                     Toast.makeText(getContext(), "Password change failed!!", Toast.LENGTH_SHORT).show();
                                 }

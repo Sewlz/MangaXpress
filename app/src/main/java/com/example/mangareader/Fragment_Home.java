@@ -109,7 +109,7 @@ public class    Fragment_Home extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         if(user == null){
-            Intent intent = new Intent(getContext(),LoginActivity.class);
+            Intent intent = new Intent(getContext(), ActivityLogin.class);
             startActivity(intent);
         }else {
             Log.d("TAG", "onCreate: "+user.getEmail());
@@ -141,7 +141,7 @@ public class    Fragment_Home extends Fragment {
         lvHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getContext(),InfoActivity.class);
+                Intent intent = new Intent(getContext(), ActivityInfo.class);
                 String detail_url = arrayList.get(position).getDetail_url();
                 String title = arrayList.get(position).getTitle();
                 intent.putExtra("detail_url",detail_url);

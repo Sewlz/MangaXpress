@@ -7,14 +7,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +30,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,10 +39,10 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link InfoFragment#newInstance} factory method to
+ * Use the {@link Fragment_Info#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class InfoFragment extends Fragment {
+public class Fragment_Info extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -69,7 +65,7 @@ public class InfoFragment extends Fragment {
     String detail_url;
     String thumbnail_url;
 
-    public InfoFragment() {
+    public Fragment_Info() {
         // Required empty public constructor
     }
 
@@ -83,8 +79,8 @@ public class InfoFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     //mod in order to send data to another fragment in view pager smh -1
-    public static InfoFragment newInstance(Detail detail) {
-        InfoFragment fragment = new InfoFragment();
+    public static Fragment_Info newInstance(Detail detail) {
+        Fragment_Info fragment = new Fragment_Info();
         Bundle args = new Bundle();
         //mod in order to send data to another fragment in view pager smh -1
         args.putString("synopsis", detail.synopsis);
@@ -111,7 +107,7 @@ public class InfoFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
-        InfoActivity activity = (InfoActivity) getActivity();
+        ActivityInfo activity = (ActivityInfo) getActivity();
 
         detail_url = activity.get_detail_url();
 
@@ -165,7 +161,7 @@ public class InfoFragment extends Fragment {
         btnFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ReadingActivity.class);
+                Intent intent = new Intent(getContext(), ActivityReading.class);
                 intent.putExtra("positionChapter", arrayListChapter.size() - 1);
                 intent.putExtra("ArrayListChapter", arrayListChapter);
                 intent.putExtra("ArrayListName", arrayList);
@@ -176,7 +172,7 @@ public class InfoFragment extends Fragment {
         btnLast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ReadingActivity.class);
+                Intent intent = new Intent(getContext(), ActivityReading.class);
                 intent.putExtra("positionChapter", 0);
                 intent.putExtra("ArrayListChapter", arrayListChapter);
                 intent.putExtra("ArrayListName", arrayList);

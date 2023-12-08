@@ -2,7 +2,6 @@ package com.example.mangareader;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,7 +99,7 @@ public class Fragment_Search extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         if(user == null){
-            Intent intent = new Intent(getContext(),LoginActivity.class);
+            Intent intent = new Intent(getContext(), ActivityLogin.class);
             startActivity(intent);
         }else {
             addEvents();
@@ -117,15 +116,16 @@ public class Fragment_Search extends Fragment {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 searchParam = edtSearch.getText().toString().toLowerCase();
                 apiUrl = "https://wibutools.live/api/komiku/" +searchParam.replaceAll("\\s+","-");
-                Toast.makeText(getContext(), "test: "+apiUrl, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "test: "+apiUrl, Toast.LENGTH_SHORT).show();
                 getAllData(apiUrl);
                 return true;
             }
         });
+
         lvSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getContext(),InfoActivity.class);
+                Intent intent = new Intent(getContext(), ActivityInfo.class);
                 intent.putExtra("searchUrl",apiUrl);
                 startActivity(intent);
             }

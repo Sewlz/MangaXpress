@@ -15,22 +15,22 @@
         android:theme="@style/Theme.MangaReader"
         tools:targetApi="31">
         <activity
-            android:name=".FavoriteActivity"
+            android:name=".ActivityFavorite"
             android:exported="false" />
         <activity
-            android:name=".InfoActivity"
+            android:name=".ActivityInfo"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".ActivityHome"
             android:exported="false" />
         <activity
-            android:name=".ReadingActivity"
+            android:name=".ActivityReading"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ActivityRegister"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ActivityLogin"
             android:windowSoftInputMode="adjustNothing"
             android:exported="true">
             <intent-filter>

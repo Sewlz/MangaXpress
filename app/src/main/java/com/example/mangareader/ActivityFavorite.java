@@ -20,7 +20,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class FavoriteActivity extends AppCompatActivity {
+public class ActivityFavorite extends AppCompatActivity {
     CustomFavoriteAdapter adapter;
     ArrayList<UserFav> arrayList = new ArrayList<>();
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
@@ -40,7 +40,7 @@ public class FavoriteActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 UserFav userFav = arrayList.get(position);
-                Intent intent = new Intent(FavoriteActivity.this, InfoActivity.class);
+                Intent intent = new Intent(ActivityFavorite.this, ActivityInfo.class);
                 intent.putExtra("detail_url",userFav.getMangaUrl());
                 startActivity(intent);
             }

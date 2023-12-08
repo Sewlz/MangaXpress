@@ -18,59 +18,58 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class RegisterActivity extends AppCompatActivity {
-    private EditText edtNameReg,edtEmailReg,edtPassReg;
-    private Button buttonRegister;
-    private TextView textViewLogin;
+public class ActivityLogin extends AppCompatActivity {
     private int[] imageArray = {R.drawable.login_background,R.drawable.login_background_1,R.drawable.login_background_2};
     private int currentIndex = 0;
-    private ConstraintLayout constraintlayoutReg;
+    private ConstraintLayout constraintlayout;
     private Handler handler = new Handler();
     private static final int INTERVAL = 3000;
     private FirebaseAuth mAuth;
+    private EditText edtEmail,edtPass;
+    private Button buttonLogin;
+    private TextView textViewRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        constraintlayoutReg = (ConstraintLayout) findViewById(R.id.constraintlayoutReg);
+        setContentView(R.layout.activity_login);
+        constraintlayout = (ConstraintLayout) findViewById(R.id.constraintlayout);
         startImageChangeLoop();
         addControl();
         addEvent();
     }
     private void addControl(){
-        edtNameReg = (EditText) findViewById(R.id.edtNameReg);
-        edtEmailReg = (EditText) findViewById(R.id.edtEmailReg);
-        edtPassReg = (EditText) findViewById(R.id.edtPassReg);
-        buttonRegister = (Button) findViewById(R.id.buttonRegister);
-        textViewLogin = (TextView) findViewById(R.id.textViewLogin);
+        edtEmail = (EditText) findViewById(R.id.edtEmail);
+        edtPass = (EditText) findViewById(R.id.edtPass);
+        buttonLogin = (Button) findViewById(R.id.buttonLogin);
+        textViewRegister = (TextView) findViewById(R.id.textViewRegister);
     }
     private void addEvent(){
         mAuth = FirebaseAuth.getInstance();
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email, pass;
-                email = String.valueOf(edtEmailReg.getText().toString());
-                pass = String.valueOf(edtPassReg.getText().toString());
-                mAuth.createUserWithEmailAndPassword(email,pass)
-                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                String email = edtEmail.getText().toString();
+                String pass = edtPass.getText().toString();
+                mAuth.signInWithEmailAndPassword(email,pass)
+                        .addOnCompleteListener(ActivityLogin.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
-                                    Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                                    Intent intent = new Intent(ActivityLogin.this, ActivityHome.class);
                                     startActivity(intent);
-                                    Toast.makeText(RegisterActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
-                                }else {
-                                    Toast.makeText(RegisterActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ActivityLogin.this, "Sign in successfully", Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    Toast.makeText(ActivityLogin.this, "Sign in failed", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
             }
         });
-        textViewLogin.setOnClickListener(new View.OnClickListener() {
+        textViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                Intent intent = new Intent(ActivityLogin.this, ActivityRegister.class);
                 startActivity(intent);
             }
         });
@@ -80,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // Change the image
-                constraintlayoutReg.setBackgroundResource(imageArray[currentIndex]);
+                constraintlayout.setBackgroundResource(imageArray[currentIndex]);
                 currentIndex = (currentIndex + 1) % imageArray.length;
                 handler.postDelayed(this, INTERVAL);
             }

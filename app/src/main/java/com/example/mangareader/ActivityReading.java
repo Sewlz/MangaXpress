@@ -7,13 +7,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,7 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 
-public class ReadingActivity extends AppCompatActivity {
+public class ActivityReading extends AppCompatActivity {
     ListView lvPicture;
     ImageButton btnNextChap, btnPrevChap, btnBack;
     Button btnShow;
@@ -124,7 +122,7 @@ public class ReadingActivity extends AppCompatActivity {
         btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ReadingActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ActivityReading.this);
                 builder.setTitle("Danh sách chap: ");
 
                 String[] arrayChapter = arrayListName.toArray(new String[0]);

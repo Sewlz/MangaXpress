@@ -13,7 +13,7 @@ import android.widget.FrameLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class HomeActivity extends AppCompatActivity {
+public class ActivityHome extends AppCompatActivity {
     BottomNavigationView navHome;
     FrameLayout frameHome;
     @Override

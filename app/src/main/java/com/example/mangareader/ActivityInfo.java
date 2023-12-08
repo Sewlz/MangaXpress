@@ -1,14 +1,11 @@
 package com.example.mangareader;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,9 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
-public class InfoActivity extends AppCompatActivity {
+public class ActivityInfo extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 viewPager;
     ViewPagerAdapter viewPagerAdapter;
@@ -119,7 +114,7 @@ public class InfoActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(InfoActivity.this, "Error Data!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityInfo.this, "Error Data!", Toast.LENGTH_SHORT).show();
             }
         });
         queue.add(stringRequest);

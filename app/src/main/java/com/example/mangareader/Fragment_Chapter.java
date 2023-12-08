@@ -7,8 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,10 +30,10 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ChapterFragment#newInstance} factory method to
+ * Use the {@link Fragment_Chapter#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ChapterFragment extends Fragment {
+public class Fragment_Chapter extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,7 +48,7 @@ public class ChapterFragment extends Fragment {
     ArrayList<String> arrayListChapter = new ArrayList<>();
     ArrayAdapter<String> adapter;
     ListView lvChapter;
-    public ChapterFragment() {
+    public Fragment_Chapter() {
         // Required empty public constructor
     }
 
@@ -63,8 +61,8 @@ public class ChapterFragment extends Fragment {
      * @return A new instance of fragment ChapterFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ChapterFragment newInstance(String param1, String param2) {
-        ChapterFragment fragment = new ChapterFragment();
+    public static Fragment_Chapter newInstance(String param1, String param2) {
+        Fragment_Chapter fragment = new Fragment_Chapter();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -92,13 +90,13 @@ public class ChapterFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         lvChapter = (ListView) view.findViewById(R.id.lvChapter);
-        InfoActivity activity = (InfoActivity) getActivity();
+        ActivityInfo activity = (ActivityInfo) getActivity();
         String detail_url = activity.get_detail_url();
         getAllData(detail_url);
         lvChapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getContext(), ReadingActivity.class);
+                Intent intent = new Intent(getContext(), ActivityReading.class);
                 intent.putExtra("positionChapter", position);
                 intent.putExtra("ArrayListChapter", arrayListChapter);
                 intent.putExtra("ArrayListName", arrayList);

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#F6F5F5"
-    tools:context=".InfoFragment">
+    tools:context=".Fragment_Info">
 
     <ScrollView
         android:layout_width="match_parent"

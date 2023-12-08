@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/login_background"
     android:id="@+id/constraintlayoutReg"
-    tools:context=".RegisterActivity">
+    tools:context=".ActivityRegister">
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,14 +34,6 @@
         android:textColor="#FFFFFF"
         android:textSize="40dp" />
     <EditText
-        android:id="@+id/edtNameReg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:hint="Your Name" />
-    <EditText
         android:id="@+id/edtEmailReg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,6 +50,15 @@
         android:textColor="@color/white"
         android:inputType="textPassword"
         android:hint="Password" />
+        <EditText
+            android:id="@+id/edtComfirmPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:inputType="textPassword"
+            android:hint="Comfirm Password" />
     <Button
         android:id="@+id/buttonRegister"
         android:layout_width="match_parent"
