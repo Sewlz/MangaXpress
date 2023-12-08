@@ -200,7 +200,7 @@ public class InfoFragment extends Fragment {
     }
 
     private void addFav(UserFav userFav){
-        collectionReference.whereEqualTo("MANGAURL",detail_url)
+        collectionReference.whereEqualTo("MANGAURL","http"+detail_url.substring(5))
                 .whereEqualTo("EMAIL",user.getEmail())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -236,9 +236,8 @@ public class InfoFragment extends Fragment {
                     }
                 });
     }
-
     private void checkFav() {
-        collectionReference.whereEqualTo("MANGAURL", detail_url)
+        collectionReference.whereEqualTo("MANGAURL", "http"+detail_url.substring(5))
                 .whereEqualTo("EMAIL", user.getEmail())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

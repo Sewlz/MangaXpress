@@ -133,6 +133,7 @@ public class ReadingActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         pictureList.clear();
+                        positionChapter = which;
                         updateUrl(which);
                         getAllPictures(url);
                     }
